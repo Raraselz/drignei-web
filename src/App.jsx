@@ -13,7 +13,8 @@ function App() {
   }
 
   return (
-    <div className="w-full h-screen flex justify-center flex-col flex-nowrap items-center bg-linear-160 from-red-700 via-black to-black" >
+    <div className=' bg-linear-160 from-red-700 via-black to-black'>
+    <div className="w-full h-screen flex justify-center flex-col flex-nowrap items-center" >
       
         <div className="text-white text-5xl italic font-bold select-none">DRIGNEI Web</div>
 
@@ -23,7 +24,7 @@ function App() {
         </form>
 
         <Bookmarks />
-
+    </div>
     </div>
   )
 }

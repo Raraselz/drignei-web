@@ -1,7 +1,16 @@
 export default function Icon({ href, src, alt }) {
+  const defaultSize = 85; // pixels
   return (
     <img
-      className="w-15 max-w-15 min-w-15 min-h-15 max-h-15  h-15 border border-gray-600 rounded-lg hover:scale-125 transition-transform cursor-pointer"
+      className={`opacity-80 hover:opacity-100 border border-gray-600 rounded-lg hover:scale-125 transition-transform cursor-pointer`}
+      style={{
+        maxWidth: defaultSize, 
+        minWidth: defaultSize,
+        maxHeight: defaultSize,
+        minHeight: defaultSize,
+        height: defaultSize,
+        width: defaultSize
+      }}
       src={src}
       alt={alt}
       onClick={() => window.open(href, '_blank')}
