@@ -9,7 +9,8 @@ function Bookmarks() {
   }])
 
   useEffect(() => {
-    for(let i = 0; i < 8; i++) {
+    setBookmarks([])
+    for(let i = 1; i <= 9; i++) {
       setBookmarks(prev => [...prev, {
         href: `https://example.com/bookmark${i}`,
         src: `/assets/bookmark${i}.png`, 
@@ -19,7 +20,7 @@ function Bookmarks() {
   }, [])
 
   return (
-    <div className="mt-20 max-w-sm flex justify-center items-center space-x-8">
+    <div className="mt-10 max-w-1/2 flex justify-center items-center gap-6 flex-wrap">
       {bookmarks.map((bookmark, index) => (
         <Icon key={index} href={bookmark.href} src={bookmark.src} alt={bookmark.alt} />
       ))}
