@@ -10,4 +10,5 @@ export default defineConfig({
     outDir: 'docs',
   },
   plugins: [react(), tailwindcss()],
+  base: '/drignei-web/'
 })
