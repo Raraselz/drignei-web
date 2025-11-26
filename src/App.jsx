@@ -77,7 +77,7 @@ function App() {
             <label className="block text-sm font-medium mt-4">URL</label>
             <input
               type="text"
-              className="border-2 rounded-sm mt-2 w-full p-1"
+              className="border-1 rounded-sm mt-2 w-full p-1"
               value={currentBookmarkIndexURL}
               onChange={(e) => setCurrentBookmarkIndexURL(e.target.value)}
             />
