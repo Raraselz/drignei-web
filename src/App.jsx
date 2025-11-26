@@ -9,6 +9,8 @@ function App() {
   const [darkOverlayOpacity, setDarkOverlayOpacity] = useState(0);
   const [dialogDivOpen, setDialogDivOpen] = useState(false);
   const [currentBookmarkIndex, setCurrentBookmarkIndex] = useState(0);
+  const [currentBookmarkIndexTitle, setCurrentBookmarkIndexTitle] = useState("");
+  const [currentBookmarkIndexURL, setCurrentBookmarkIndexURL] = useState("");
 
   const toggleDialogDiv = (bookmark_index) => {
     setCurrentBookmarkIndex(bookmark_index);
@@ -56,10 +58,13 @@ function App() {
       <div className={"fixed inset-0 flex items-center justify-center"} style={{ display: dialogDivOpen ? 'flex' : 'none'}}>
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full mx-4">
           <div className="flex justify-between items-start">
-            <h3 className="text-lg font-semibold">Dialog test</h3>
-            <button onClick={() => toggleDialogDiv()} className="text-gray-600 hover:text-gray-800">✕</button>
+            <h3 className="text-lg font-semibold">Edit Bookmark</h3>
+            <button onClick={() => toggleDialogDiv(0)} className="text-gray-600 hover:text-gray-800">✕</button>
           </div>
-          <p className="mt-4">This is a test dialog — click the close button to hide it.</p>
+          <form>
+            Title
+            <input></input>
+          </form>
         </div>
       </div>
 
