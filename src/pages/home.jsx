@@ -52,8 +52,8 @@ function Home() {
   }
 
   return (
-    <div className="relative w-full h-full">
-      <div className="w-full h-screen flex justify-center flex-col flex-nowrap items-center" >
+    <div className="relative w-full h-full bg-transparent">
+      <div style={{ height: '93vh' }} className="w-full flex justify-center flex-col flex-nowrap items-center" >
 
         <div className="text-white text-5xl italic font-bold select-none">DRIGNEI Web</div>
 
