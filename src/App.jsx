@@ -6,15 +6,25 @@ import Bookmarks from './components/bookmarks.jsx'
 
 function App() {
   const [query, setQuery] = useState('');
+  const [darkOverlayOpacity, setDarkOverlayOpacity] = useState(0);
+  const [dialogDivOpen, seDialogDivOpen] = useState(false);
+
+  const toggleDialogDiv = () => {
+    seDialogDivOpen(!dialogDivOpen);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     window.open(`https://www.google.com/search?q=${query}`, '_blank');
   }
 
+  const displayBookmarkEdit = () => {
+  }
+
   return (
-    <div className=' bg-linear-160 from-red-700 via-black to-black'>
-    <div className="w-full h-screen flex justify-center flex-col flex-nowrap items-center" >
+    <div className="relative w-full h-screen">
+      <div className=' bg-linear-160 from-red-700 via-black to-black'>
+      <div className="w-full h-screen flex justify-center flex-col flex-nowrap items-center" >
       
         <div className="text-white text-5xl italic font-bold select-none">DRIGNEI Web</div>
 
@@ -24,7 +34,19 @@ function App() {
         </form>
 
         <Bookmarks />
-    </div>
+      </div>
+      </div>
+      <div 
+        className="fixed inset-0 bg-black pointer-events-none" 
+        style={{ opacity: darkOverlayOpacity }}
+      ></div>
+
+      <div className='fixed position-absolute top-1/6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg'
+           style={{ display: dialogDivOpen ? 'block' : 'none' }}
+      >
+        dialog test
+      </div>
+
     </div>
   )
 }
