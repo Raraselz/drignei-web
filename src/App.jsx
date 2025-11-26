@@ -7,10 +7,11 @@ import Bookmarks from './components/bookmarks.jsx'
 function App() {
   const [query, setQuery] = useState('');
   const [darkOverlayOpacity, setDarkOverlayOpacity] = useState(0);
-  const [dialogDivOpen, seDialogDivOpen] = useState(false);
+  const [dialogDivOpen, setDialogDivOpen] = useState(false);
 
   const toggleDialogDiv = () => {
-    seDialogDivOpen(!dialogDivOpen);
+    setDialogDivOpen(!dialogDivOpen);
+    setDarkOverlayOpacity(dialogDivOpen ? 0 : 0.5);
   }
 
   const handleSubmit = (e) => {
@@ -33,18 +34,32 @@ function App() {
           <button className="ml-2 p-3 rounded-lg bg-gray-600 text-white font-semibold hover:bg-gray-900 transition" type="submit">Search</button>
         </form>
 
+        <div className="mt-4">
+          <button
+            onClick={() => toggleDialogDiv()}
+            className="p-2 rounded bg-indigo-600 text-white hover:bg-indigo-700"
+          >
+            Test Dialog
+          </button>
+        </div>
+
         <Bookmarks />
       </div>
       </div>
-      <div 
+      <div // dark overlay
         className="fixed inset-0 bg-black pointer-events-none" 
         style={{ opacity: darkOverlayOpacity }}
       ></div>
 
-      <div className='fixed position-absolute top-1/6 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg'
-           style={{ display: dialogDivOpen ? 'block' : 'none' }}
-      >
-        dialog test
+    <button testdialog className='bg-white' onClick={toggleDialogDiv}>Toggle Dialog</button>
+      <div className={"fixed inset-0 flex items-center justify-center"} style={{ display: dialogDivOpen ? 'flex' : 'none'}}>
+        <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full mx-4">
+          <div className="flex justify-between items-start">
+            <h3 className="text-lg font-semibold">Dialog test</h3>
+            <button onClick={() => toggleDialogDiv()} className="text-gray-600 hover:text-gray-800">✕</button>
+          </div>
+          <p className="mt-4">This is a test dialog — click the close button to hide it.</p>
+        </div>
       </div>
 
     </div>
