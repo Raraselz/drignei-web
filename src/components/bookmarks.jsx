@@ -2,14 +2,9 @@ import Icon from "./icon"
 import { useEffect, useState } from "react"
 function Bookmarks() {
   
-  const [bookmarks, setBookmarks] = useState([{
-    href: "",
-    src: "",
-    alt: ""
-  }]);
+  const [bookmarks, setBookmarks] = useState([]);
 
   useEffect(() => {
-    setBookmarks([]);
     const newBookmarks = [];
     for(let i = 1; i <= 7; i++) {
       const bookmark = localStorage.getItem('bookmark_' + i);
