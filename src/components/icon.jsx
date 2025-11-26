@@ -6,25 +6,27 @@ export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, i
       // If it's an http(s) URL, open with no target (same default behavior)
       if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
         window.open(url);
-        return; 
+        return;
       }
     } catch (e) {
       // invalid absolute URL (maybe relative or mailto), fall through
     }
   }
 
+  const imageSize = defaultSize / 2; // half size
+
   return (
-    <div className="group relative opacity-80 hover:opacity-100 transition-all hover:scale-125 ">
-      <button className="absolute z-10 text-xs top-0 right-0 p-1 bg-gray-800/50 text-white rounded group-hover:block hidden" onClick={() => {toggleDialogDiv(index+1)}}>...</button>  
+    <div style={{height: defaultSize,width: defaultSize}} className="group relative opacity-80 hover:opacity-100 hover:bg-gray-900/20 transition-all hover:scale-125 flex items-center justify-center bg-gray-800/20 border border-gray-600 rounded-lg  cursor-pointer">
+      <button className="absolute z-10 text-xs top-1 right-1 p-1 bg-gray-800/50 text-white rounded hover:scale-125 hover:bg-gray-800/50 transition-transform group-hover:block hidden" onClick={() => { toggleDialogDiv(index + 1) }}>...</button>
       <img
-        className={`z-1 border border-gray-600 rounded-lg  cursor-pointer`}
+        className={`z-1`}
         style={{
-          maxWidth: defaultSize,
-          minWidth: defaultSize,
-          maxHeight: defaultSize,
-          minHeight: defaultSize,
-          height: defaultSize,
-          width: defaultSize
+          maxWidth: imageSize,
+          minWidth: imageSize,
+          maxHeight: imageSize,
+          minHeight: imageSize,
+          height: imageSize,
+          width: imageSize
         }}
         src={src}
         alt={alt}

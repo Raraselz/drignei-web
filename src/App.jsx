@@ -42,7 +42,6 @@ function App() {
     }
     else if(dialogDivOpen)
     {
-      const defaulSrc = "https://scontent.fcra1-1.fna.fbcdn.net/v/t39.30808-1/356379865_3457504497848826_2587823873892593405_n.jpg?stp=c0.0.396.396a_dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=e99d92&_nc_ohc=nVCbaWUGeuAQ7kNvwFCb4Ea&_nc_oc=AdmvycPxNoB1VoPx_C9MGRKSoetcHY-ni5f2CDFKvI1YtIykPqNtR6_BXIq4VXBJI60&_nc_zt=24&_nc_ht=scontent.fcra1-1.fna&_nc_gid=NpuwEgKPXo1e6oqhs9Yrgg&oh=00_AfhS8Bt-1j_b0CjZGZF559eCYkFhY80Wkc76bYBUJ6mhlg&oe=692BF391";
       const imgfavicon = highResFaviconUrl(currentBookmarkIndexURL);
       localStorage.setItem('bookmark_' + currentBookmarkIndex, JSON.stringify({ href: currentBookmarkIndexURL, src: `${imgfavicon}`, alt: `bookmark_ + ${currentBookmarkIndex}` })); 
     }
@@ -87,19 +86,22 @@ function App() {
       ></div>
 
       <div className={"fixed inset-0 flex items-center justify-center"} style={{ display: dialogDivOpen ? 'flex' : 'none'}}>
-        <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full mx-4">
+        <div className="flex flex-col bg-white p-6 rounded-lg shadow-lg max-w-lg w-full mx-4">
           <div className="flex justify-between items-start">
             <h3 className="text-lg font-semibold">Edit Bookmark</h3>
-            <button onClick={() => toggleDialogDiv(1)} className="text-gray-600 hover:text-gray-800">✕</button>
+            <button onClick={() => toggleDialogDiv(currentBookmarkIndex)} className="text-gray-600 hover:text-gray-800">✕</button>
           </div>
-          <form className="p-3">
+          <form onSubmit={(e) => {toggleDialogDiv(currentBookmarkIndex)}}>
             <label className="block text-sm font-medium mt-4">URL</label>
             <input
               type="text"
-              className="border-1 rounded-sm mt-2 w-full p-1"
+              className="border rounded-sm mt-2 w-full p-1"
               value={currentBookmarkIndexURL}
               onChange={(e) => setCurrentBookmarkIndexURL(e.target.value)}
             />
+            <button type="submit" className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+              Save
+            </button>
           </form>
         </div>
       </div>
