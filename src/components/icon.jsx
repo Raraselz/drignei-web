@@ -1,8 +1,8 @@
-export default function Icon({ href, src, alt }) {
+export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, index }) {
   const defaultSize = 85; // pixels
   return (
     <div className="group relative opacity-80 hover:opacity-100 transition-all hover:scale-125 ">
-      <button className="absolute z-10 text-xs top-0 right-0 p-1 bg-gray-800/50 text-white rounded group-hover:block hidden">...</button>  
+      <button className="absolute z-10 text-xs top-0 right-0 p-1 bg-gray-800/50 text-white rounded group-hover:block hidden" onClick={() => {toggleDialogDiv(index+1)}}>...</button>  
       <img
         className={`z-1 border border-gray-600 rounded-lg  cursor-pointer`}
         style={{

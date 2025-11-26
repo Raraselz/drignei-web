@@ -1,6 +1,6 @@
 import Icon from "./icon"
 import { useEffect, useState } from "react"
-function Bookmarks() {
+function Bookmarks({ toggleDialogDiv, dialogDivOpen }) {
   
   const [bookmarks, setBookmarks] = useState([]);
 
@@ -36,7 +36,7 @@ function Bookmarks() {
   return (
     <div className="mt-10 max-w-1/2 flex justify-center items-center gap-6 flex-wrap">
       {bookmarks.map((bookmark, index) => (
-        <Icon key={index} href={bookmark.href} src={bookmark.src} alt={bookmark.alt} />
+        <Icon key={index} index={index} href={bookmark.href} src={bookmark.src} alt={bookmark.alt} toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen} />
       ))}
     </div>
   )

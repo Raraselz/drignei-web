@@ -11,6 +11,14 @@ function App() {
   const [currentBookmarkIndex, setCurrentBookmarkIndex] = useState(0);
   const [currentBookmarkIndexURL, setCurrentBookmarkIndexURL] = useState("");
 
+  const getURLfavicon = (url) => {
+    try {
+      const urlObj = new URL(url);
+      return `${urlObj.protocol}//${urlObj.hostname}/favicon.ico`;
+    } catch (error) {
+      return "";
+    }
+  }
 
   const toggleDialogDiv = (bookmark_index) => {
     if(!dialogDivOpen)
@@ -35,9 +43,6 @@ function App() {
     window.open(`https://www.google.com/search?q=${query}`, '_blank');
   }
 
-  const displayBookmarkEdit = () => {
-  }
-
   return (
     <div className="relative w-full h-screen">
       <div className=' bg-linear-160 from-red-700 via-black to-black'>
@@ -59,7 +64,7 @@ function App() {
           </button>
         </div>
 
-        <Bookmarks />
+        <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen}/>
       </div>
       </div>
       <div // dark overlay
