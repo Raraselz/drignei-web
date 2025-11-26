@@ -9,5 +9,17 @@ export default defineConfig({
   build: {
     outDir: 'docs',
   },
+  // Dev server proxy to bypass CORS for Google suggestions during development
+  server: {
+    proxy: {
+      // Proxy requests from /suggest -> https://suggestqueries.google.com/complete/search
+      '/suggest': {
+        target: 'https://suggestqueries.google.com',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/suggest/, '/complete/search')
+      }
+    }
+  },
   plugins: [react(), tailwindcss()],
 })

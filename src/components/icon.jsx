@@ -17,7 +17,7 @@ export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, i
 
   return (
     <div style={{height: defaultSize,width: defaultSize}} className="group relative opacity-80 hover:opacity-100 hover:bg-gray-900/20 transition-all hover:scale-125 flex items-center justify-center bg-gray-800/20 border border-gray-600 rounded-lg  cursor-pointer">
-      <button className="absolute z-10 text-xs top-1 right-1 p-1 bg-gray-800/50 text-white rounded hover:scale-125 hover:bg-gray-800/50 transition-transform group-hover:block hidden" onClick={() => { toggleDialogDiv(index + 1) }}>...</button>
+      <button className="absolute z-10 text-xs top-1 right-1 p-1 bg-gray-800/50 transition-all hover:bg-gray-700/50 text-white rounded group-hover:block hidden" onClick={() => { toggleDialogDiv(index + 1) }}>...</button>
       <img
         className={`z-1`}
         style={{
