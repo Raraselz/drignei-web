@@ -15,8 +15,10 @@ function App() {
 
   const toggleDialogDiv = (bookmark_index) => {
     setCurrentBookmarkIndex(bookmark_index);
-    setDialogDivOpen(!dialogDivOpen);
-    setDarkOverlayOpacity(dialogDivOpen ? 0 : 0.5);
+    const nextOpen = !dialogDivOpen;
+    setCurrentBookmarkIndex(bookmark_index);
+    setDialogDivOpen(nextOpen);
+    setDarkOverlayOpacity(nextOpen ? 0.5 : 0);
   }
 
   const handleSubmit = (e) => {
@@ -62,9 +64,21 @@ function App() {
             <h3 className="text-lg font-semibold">Edit Bookmark</h3>
             <button onClick={() => toggleDialogDiv(0)} className="text-gray-600 hover:text-gray-800">✕</button>
           </div>
-          <form>
-            Title
-            <input></input>
+          <form className="p-3">
+            <label className="block text-sm font-medium">Title</label>
+            <input
+              type="text"
+              className="border-2 rounded-sm mt-2 w-full p-1"
+              value={currentBookmarkIndexTitle}
+              onChange={(e) => setCurrentBookmarkIndexTitle(e.target.value)}
+            />
+            <label className="block text-sm font-medium mt-4">URL</label>
+            <input
+              type="text"
+              className="border-2 rounded-sm mt-2 w-full p-1"
+              value={currentBookmarkIndexURL}
+              onChange={(e) => setCurrentBookmarkIndexURL(e.target.value)}
+            />
           </form>
         </div>
       </div>
