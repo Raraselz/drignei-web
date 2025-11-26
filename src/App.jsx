@@ -19,6 +19,7 @@ function App() {
     setDarkOverlayOpacity(dialogDivOpen ? 0 : 0.5);
   }
 
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     window.open(`https://www.google.com/search?q=${query}`, '_blank');
