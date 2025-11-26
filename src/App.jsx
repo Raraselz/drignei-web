@@ -20,6 +20,19 @@ function App() {
     }
   }
 
+  function highResFaviconUrl(pageUrl, size = 128) {
+  try {
+    const urlObj = new URL(pageUrl);
+    const domain = urlObj.hostname;
+    // FaviconKit (preferred)
+    //return `https://api.faviconkit.com/${domain}/${size}`;
+    // Or, if you prefer Google:
+     return `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`;
+  } catch (e) {
+    return ""; // invalid URL
+  }
+}
+
   const toggleDialogDiv = (bookmark_index) => {
     if(!dialogDivOpen)
     {
@@ -29,13 +42,15 @@ function App() {
     }
     else if(dialogDivOpen)
     {
-      const defaulsrc = "https://scontent.fcra1-1.fna.fbcdn.net/v/t39.30808-1/356379865_3457504497848826_2587823873892593405_n.jpg?stp=c0.0.396.396a_dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=e99d92&_nc_ohc=nVCbaWUGeuAQ7kNvwFCb4Ea&_nc_oc=AdmvycPxNoB1VoPx_C9MGRKSoetcHY-ni5f2CDFKvI1YtIykPqNtR6_BXIq4VXBJI60&_nc_zt=24&_nc_ht=scontent.fcra1-1.fna&_nc_gid=NpuwEgKPXo1e6oqhs9Yrgg&oh=00_AfhS8Bt-1j_b0CjZGZF559eCYkFhY80Wkc76bYBUJ6mhlg&oe=692BF391";
-      localStorage.setItem('bookmark_' + currentBookmarkIndex, JSON.stringify({ href: currentBookmarkIndexURL, src: `${defaulsrc}`, alt: `bookmark_ + ${currentBookmarkIndex}` }));
+      const defaulSrc = "https://scontent.fcra1-1.fna.fbcdn.net/v/t39.30808-1/356379865_3457504497848826_2587823873892593405_n.jpg?stp=c0.0.396.396a_dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=e99d92&_nc_ohc=nVCbaWUGeuAQ7kNvwFCb4Ea&_nc_oc=AdmvycPxNoB1VoPx_C9MGRKSoetcHY-ni5f2CDFKvI1YtIykPqNtR6_BXIq4VXBJI60&_nc_zt=24&_nc_ht=scontent.fcra1-1.fna&_nc_gid=NpuwEgKPXo1e6oqhs9Yrgg&oh=00_AfhS8Bt-1j_b0CjZGZF559eCYkFhY80Wkc76bYBUJ6mhlg&oe=692BF391";
+      const imgfavicon = highResFaviconUrl(currentBookmarkIndexURL);
+      localStorage.setItem('bookmark_' + currentBookmarkIndex, JSON.stringify({ href: currentBookmarkIndexURL, src: `${imgfavicon}`, alt: `bookmark_ + ${currentBookmarkIndex}` })); 
     }
     const nextOpen = !dialogDivOpen;
     setDialogDivOpen(nextOpen);
     setDarkOverlayOpacity(nextOpen ? 0.5 : 0);
   }
+
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +69,16 @@ function App() {
           <button className="ml-2 p-3 rounded-lg bg-gray-600 text-white font-semibold hover:bg-gray-900 transition" type="submit">Search</button>
         </form>
 
-        <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen}/>
+        <div className="mt-4">
+          <button // open dialog
+            onClick={() => toggleDialogDiv(1)}
+            className="p-2 rounded bg-indigo-600 text-white hover:bg-indigo-700"
+          >
+            Test Dialog
+          </button>
+        </div>
+
+        <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen}f/>
       </div>
       </div>
       <div // dark overlay
@@ -66,13 +90,13 @@ function App() {
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full mx-4">
           <div className="flex justify-between items-start">
             <h3 className="text-lg font-semibold">Edit Bookmark</h3>
-            <button onClick={() => toggleDialogDiv(currentBookmarkIndex)} className="text-gray-600 hover:text-gray-800">✕</button>
+            <button onClick={() => toggleDialogDiv(1)} className="text-gray-600 hover:text-gray-800">✕</button>
           </div>
-          <form onSubmit={() => toggleDialogDiv(currentBookmarkIndex)} className="p-3">
+          <form className="p-3">
             <label className="block text-sm font-medium mt-4">URL</label>
             <input
               type="text"
-              className="border rounded-sm mt-2 w-full p-1"
+              className="border-1 rounded-sm mt-2 w-full p-1"
               value={currentBookmarkIndexURL}
               onChange={(e) => setCurrentBookmarkIndexURL(e.target.value)}
             />
