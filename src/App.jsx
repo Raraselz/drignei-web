@@ -36,7 +36,6 @@ function App() {
     setDialogDivOpen(nextOpen);
     setDarkOverlayOpacity(nextOpen ? 0.5 : 0);
   }
-
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,15 +54,6 @@ function App() {
           <button className="ml-2 p-3 rounded-lg bg-gray-600 text-white font-semibold hover:bg-gray-900 transition" type="submit">Search</button>
         </form>
 
-        <div className="mt-4">
-          <button // open dialog
-            onClick={() => toggleDialogDiv(1)}
-            className="p-2 rounded bg-indigo-600 text-white hover:bg-indigo-700"
-          >
-            Test Dialog
-          </button>
-        </div>
-
         <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen}/>
       </div>
       </div>
@@ -76,13 +66,13 @@ function App() {
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full mx-4">
           <div className="flex justify-between items-start">
             <h3 className="text-lg font-semibold">Edit Bookmark</h3>
-            <button onClick={() => toggleDialogDiv(1)} className="text-gray-600 hover:text-gray-800">✕</button>
+            <button onClick={() => toggleDialogDiv(currentBookmarkIndex)} className="text-gray-600 hover:text-gray-800">✕</button>
           </div>
-          <form className="p-3">
+          <form onSubmit={() => toggleDialogDiv(currentBookmarkIndex)} className="p-3">
             <label className="block text-sm font-medium mt-4">URL</label>
             <input
               type="text"
-              className="border-1 rounded-sm mt-2 w-full p-1"
+              className="border rounded-sm mt-2 w-full p-1"
               value={currentBookmarkIndexURL}
               onChange={(e) => setCurrentBookmarkIndexURL(e.target.value)}
             />
