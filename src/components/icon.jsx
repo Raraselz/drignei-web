@@ -1,5 +1,18 @@
 export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, index }) {
   const defaultSize = 85; // pixels
+  const openBookmark = (url) => {
+    try {
+      const parsed = new URL(url);
+      // If it's an http(s) URL, open with no target (same default behavior)
+      if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+        window.open(url);
+        return; 
+      }
+    } catch (e) {
+      // invalid absolute URL (maybe relative or mailto), fall through
+    }
+  }
+
   return (
     <div className="group relative opacity-80 hover:opacity-100 transition-all hover:scale-125 ">
       <button className="absolute z-10 text-xs top-0 right-0 p-1 bg-gray-800/50 text-white rounded group-hover:block hidden" onClick={() => {toggleDialogDiv(index+1)}}>...</button>  
@@ -15,7 +28,7 @@ export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, i
         }}
         src={src}
         alt={alt}
-        onClick={() => window.open(href, '_blank')}
+        onClick={() => openBookmark(href)}
       />
     </div>
   )
