@@ -8,8 +8,10 @@ function App() {
   const [query, setQuery] = useState('');
   const [darkOverlayOpacity, setDarkOverlayOpacity] = useState(0);
   const [dialogDivOpen, setDialogDivOpen] = useState(false);
+  const [currentBookmarkIndex, setCurrentBookmarkIndex] = useState(0);
 
-  const toggleDialogDiv = () => {
+  const toggleDialogDiv = (bookmark_index) => {
+    setCurrentBookmarkIndex(bookmark_index);
     setDialogDivOpen(!dialogDivOpen);
     setDarkOverlayOpacity(dialogDivOpen ? 0 : 0.5);
   }
@@ -35,8 +37,8 @@ function App() {
         </form>
 
         <div className="mt-4">
-          <button
-            onClick={() => toggleDialogDiv()}
+          <button // open dialog
+            onClick={() => toggleDialogDiv(0)}
             className="p-2 rounded bg-indigo-600 text-white hover:bg-indigo-700"
           >
             Test Dialog
@@ -51,7 +53,6 @@ function App() {
         style={{ opacity: darkOverlayOpacity }}
       ></div>
 
-    <button testdialog className='bg-white' onClick={toggleDialogDiv}>Toggle Dialog</button>
       <div className={"fixed inset-0 flex items-center justify-center"} style={{ display: dialogDivOpen ? 'flex' : 'none'}}>
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full mx-4">
           <div className="flex justify-between items-start">
