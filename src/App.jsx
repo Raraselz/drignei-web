@@ -70,12 +70,12 @@ function App() {
         </form>
 
         <div className="mt-4">
-          <button // open dialog
+          {/* <button // open dialog
             onClick={() => toggleDialogDiv(1)}
             className="p-2 rounded bg-indigo-600 text-white hover:bg-indigo-700"
           >
             Test Dialog
-          </button>
+          </button> */}
         </div>
 
         <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen}f/>
