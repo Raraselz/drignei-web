@@ -10,6 +10,7 @@ function Bookmarks() {
 
   useEffect(() => {
     setBookmarks([])
+    
     for(let i = 1; i <= 7; i++) {
       setBookmarks(prev => [...prev, {
         href: `https://www.facebook.com/maria.drignei/?locale=ro_RO`,
