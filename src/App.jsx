@@ -12,6 +12,7 @@ function App() {
   const [currentBookmarkIndexTitle, setCurrentBookmarkIndexTitle] = useState("");
   const [currentBookmarkIndexURL, setCurrentBookmarkIndexURL] = useState("");
 
+
   const toggleDialogDiv = (bookmark_index) => {
     setCurrentBookmarkIndex(bookmark_index);
     setDialogDivOpen(!dialogDivOpen);
