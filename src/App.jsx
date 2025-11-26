@@ -9,7 +9,7 @@ function App() {
   const [darkOverlayOpacity, setDarkOverlayOpacity] = useState(0);
   const [dialogDivOpen, setDialogDivOpen] = useState(false);
   const [currentBookmarkIndex, setCurrentBookmarkIndex] = useState(0);
-
+  
   const toggleDialogDiv = (bookmark_index) => {
     setCurrentBookmarkIndex(bookmark_index);
     setDialogDivOpen(!dialogDivOpen);
