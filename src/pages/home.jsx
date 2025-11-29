@@ -128,8 +128,8 @@ function Home() {
           </a>
           <a id="author2_link" href="https://github.com/constantyn-silvian" target='_black'>
           <img src="https://avatars.githubusercontent.com/u/205173445?v=4" style={{
-            width: `${Math.max(window.innerWidth * 0.03, 20)}px`,
-            height: `${Math.max(window.innerWidth * 0.03, 20)}px`,
+            width: `${Math.max(window.innerWidth * 0.03, 30)}px`,
+            height: `${Math.max(window.innerWidth * 0.03, 30)}px`,
             borderRadius: '50%',
             marginRight: '4px'
           }} className="hover:border-2" id="author2"></img>
