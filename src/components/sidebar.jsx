@@ -45,7 +45,7 @@ export default function SideBar() {
         aria-hidden={false}
         className="absolute text-center text-lg left-1/2 transform -translate-x-1/2 text-white font-light "
         style={{ pointerEvents: 'none',
-          fontSize: 'clamp(14px, 2vw, 20px)',
+          fontSize: 'clamp(9px, 2vw, 20px)',
           width: '20vw'
          }}
       >
