@@ -49,13 +49,13 @@ function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     window.open(`https://www.google.com/search?q=${query}`, '_blank');
-  }
+  } 
 
   return (
     <div className="relative w-full h-full bg-transparent">
       <div style={{ height: '93vh' }} className="w-full flex justify-center flex-col flex-nowrap items-center" >
 
-        <div className="text-white text-5xl italic font-bold select-none">DRIGNEI Web</div>
+        <div className="text-white text-6xl font-bold font-custom select-none">DRIGNEI Web</div>
 
         <form onSubmit={handleSubmit}>
           <input className="min-w-2xl max-w-2xl mt-10 focus:border-0 outline-none p-3 rounded-lg bg-gray-800 text-white border-0" type="text" placeholder="Google Search" value={query} onChange={(e) => setQuery(e.target.value)} />
