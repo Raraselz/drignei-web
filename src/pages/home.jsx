@@ -52,26 +52,26 @@ function Home() {
   }
 
   return (
-    <div className="relative w-full h-full bg-transparent">
+    <div className="relative w-full bg-transparent">
       <div style={{ height: '93vh' }} className="w-full flex justify-center flex-col flex-nowrap items-center" >
 
-        <div className="text-white text-5xl italic font-bold select-none">DRIGNEI Web</div>
+        {/* Titlu */}
+        <div className={`text-white italic font-bold select-none`} style={{
+          fontSize: `${window.innerWidth > 900 ? "3.5rem" : "2.25rem"}`,
+        }}>DRIGNEI Web</div>
 
+        {/* Search Form */}
         <form onSubmit={handleSubmit}>
-          <input className="min-w-2xl max-w-2xl mt-10 focus:border-0 outline-none p-3 rounded-lg bg-gray-800 text-white border-0" type="text" placeholder="Google Search" value={query} onChange={(e) => setQuery(e.target.value)} />
-          <button className="ml-2 p-3 rounded-lg bg-gray-600 text-white font-semibold hover:bg-gray-900 transition" type="submit">Search</button>
+          <input style={{
+            width: "50vw"
+          }}className="mt-10 focus:border-0 outline-none p-3 rounded-lg bg-gray-800 text-white border-0" type="text" placeholder="Google Search" value={query} onChange={(e) => setQuery(e.target.value)} />
+          <button style={{
+
+          }} className="ml-2 p-3 rounded-lg bg-gray-600 text-white font-semibold hover:bg-gray-900 transition" type="submit">Search</button>
         </form>
 
-        <div className="mt-4">
-          {/* <button // open dialog
-            onClick={() => toggleDialogDiv(1)}
-            className="p-2 rounded bg-indigo-600 text-white hover:bg-indigo-700"
-          >
-            Test Dialog
-          </button> */}
-        </div>
-
-        <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen} f />
+        {/* Bookmarks */}
+        <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen}  />
       </div>
 
       <div // dark overlay

@@ -47,7 +47,9 @@ function CosminBounce() {
   }, []);
 
   return (
-    <div className="h-screen w-full bg-transparent z-0">
+    <div className="w-full bg-transparent z-0" style={
+      { height: '93vh'}
+    }>
     <img
       src={ball}
       style={{
