@@ -7,10 +7,12 @@ function CosminBounce() {
 
   const speed = 3;
   const [width, setWidth] = useState(Math.min(window.innerWidth / 3, window.innerHeight / 3));
-  const [height, setHeight] = useState(width);
+  const [height, setHeight] = useState(Math.min(window.innerWidth / 3, window.innerHeight / 3));
+  const [barOffset, setBarOffset] = useState(window.innerHeight * 0.07); // offset for the top bar
   useEffect(() => {
     setWidth(Math.min(window.innerWidth / 3, window.innerHeight / 3));
-    setHeight(width);
+    setHeight(Math.min(window.innerWidth / 3, window.innerHeight / 3));
+    setBarOffset(window.innerHeight * 0.07);
   }, [window.innerWidth, window.innerHeight]); 
   const animate = () => {
     setPos(prev => {
@@ -18,8 +20,7 @@ function CosminBounce() {
       let y = prev.y + dir.current.y * speed;
 
       const maxX = window.innerWidth - width;
-      // subtract top bar height (5vh) so the ball doesn't go under the bar
-      const barOffset = window.innerHeight * 0.07; // 7% of viewport height
+
       const maxY = window.innerHeight - height;
 
       // coliziune orizont

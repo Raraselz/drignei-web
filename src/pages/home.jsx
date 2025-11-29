@@ -49,7 +49,7 @@ function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     window.open(`https://www.google.com/search?q=${query}`, '_blank');
-  }
+  } 
 
   return (
     <div className="relative w-full bg-transparent">
@@ -59,7 +59,6 @@ function Home() {
         <div className={`text-white italic font-bold select-none`} style={{
           fontSize: 'clamp(24px, 5vw, 64px)',
         }}>DRIGNEI Web</div>
-
         {/* Search Form */}
         <form onSubmit={handleSubmit}>
           <input style={{

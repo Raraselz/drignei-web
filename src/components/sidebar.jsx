@@ -21,11 +21,11 @@ export default function SideBar() {
   return (
     <nav
       style={{ height: '7vh', backgroundColor: 'rgba(55, 65, 81, 0.5)' }}
-      className="relative w-full z-50 bg-gray-700 hover:bg-gray-600 transition-colors duration-300 rounded-b-xl flex items-center"
+      className="relative select-none w-full z-50 bg-gray-700 hover:bg-gray-600 transition-colors duration-300 rounded-b-xl flex items-center"
     >
       <div className="flex justify-between w-full text-white px-4">
         <Link
-          style={{ fontSize: 'clamp(14px, 2vw, 20px)' }}
+          style={{ fontSize: 'clamp(1px, 2vw, 20px)' }}
           className="font-semibold hover:font-bold"
           to="/drignei-web/"
         >
@@ -33,7 +33,7 @@ export default function SideBar() {
         </Link>
 
         <Link
-          style={{ fontSize: 'clamp(14px, 2vw, 20px)' }}
+          style={{ fontSize: 'clamp(1px, 2vw, 20px)' }}
           className="ml-4 font-semibold hover:font-bold"
           to="/drignei-web/bouncegame"
         >
@@ -45,7 +45,7 @@ export default function SideBar() {
         aria-hidden={false}
         className="absolute text-center text-lg left-1/2 transform -translate-x-1/2 text-white font-light "
         style={{ pointerEvents: 'none',
-          fontSize: window.innerWidth > 900 ? "1.25rem" : "0.75rem",
+          fontSize: 'clamp(9px, 2vw, 20px)',
           width: '20vw'
          }}
       >

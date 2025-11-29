@@ -1,1 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
 @import "tailwindcss";
+
+@theme base {
+--font-custom: 'Science Gothic', sans-serif;
+}
