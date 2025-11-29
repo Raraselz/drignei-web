@@ -37,14 +37,17 @@ export default function SideBar() {
           className="ml-4 font-semibold hover:font-bold"
           to="/drignei-web/bouncegame"
         >
-          Bounce Game
+          Cosmin Bounce
         </Link>
       </div>
 
       <div
         aria-hidden={false}
-        className="absolute left-1/2 transform -translate-x-1/2 text-white font-light text-lg"
-        style={{ pointerEvents: 'none' }}
+        className="absolute text-center text-lg left-1/2 transform -translate-x-1/2 text-white font-light "
+        style={{ pointerEvents: 'none',
+          fontSize: 'clamp(14px, 2vw, 20px)',
+          width: '20vw'
+         }}
       >
         {currentTimeText}
       </div>

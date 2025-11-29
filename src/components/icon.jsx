@@ -1,5 +1,5 @@
 export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, index }) {
-  const defaultSize = 85; // pixels
+  const defaultSize = window.innerHeight / 8; // pixels
   const openBookmark = (url) => {
     try {
       const parsed = new URL(url);
@@ -16,22 +16,23 @@ export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, i
   const imageSize = defaultSize / 2; // half size
 
   return (
-    <div style={{height: defaultSize,width: defaultSize}} className="group relative opacity-80 hover:opacity-100 hover:bg-gray-900/20 transition-all hover:scale-125 flex items-center justify-center bg-gray-800/20 border border-gray-600 rounded-lg  cursor-pointer">
-      <button className="absolute z-10 text-xs top-1 right-1 p-1 bg-gray-800/50 text-white rounded hover:scale-125 hover:bg-gray-800/50 transition-transform group-hover:block hidden" onClick={() => { toggleDialogDiv(index + 1) }}>...</button>
-      <img
-        className={`z-1`}
-        style={{
-          maxWidth: imageSize,
-          minWidth: imageSize,
-          maxHeight: imageSize,
-          minHeight: imageSize,
-          height: imageSize,
-          width: imageSize
-        }}
-        src={src}
-        alt={alt}
+    <div
+      style={{ flex: "0 0 auto", width: defaultSize, height: defaultSize, overflow: "visible" }}
+      className="group relative cursor-pointer flex items-center justify-center bg-gray-800/20 border border-gray-600 rounded-lg opacity-80 hover:opacity-100"
+    >
+      <button
+        className="absolute text-xs top-1 right-1 p-1 bg-gray-800/50 text-white rounded hidden group-hover:block transition-colors hover:bg-gray-700 z-20"
+        onClick={() => toggleDialogDiv(index + 1)}
+      >
+        ...
+      </button>
+      <div
+        className="transition-transform duration-200 group-hover:scale-125 z-10"
+        style={{ width: imageSize, height: imageSize }}
         onClick={() => openBookmark(href)}
-      />
+      >
+        <img src={src} alt={alt} className="w-full h-full object-contain" />
+      </div>
     </div>
-  )
+  );
 }
