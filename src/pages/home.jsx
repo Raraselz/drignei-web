@@ -79,7 +79,7 @@ function Home() {
         style={{ opacity: darkOverlayOpacity }}
       ></div>
 
-      <div className={"fixed inset-0 flex items-center justify-center"} style={{ display: dialogDivOpen ? 'flex' : 'none' }}>
+      <div className={"z-50 fixed inset-0 flex items-center justify-center"} style={{ display: dialogDivOpen ? 'flex' : 'none' }}>
         <div className="flex flex-col bg-white p-6 rounded-lg shadow-lg max-w-lg w-full mx-4">
           <div className="flex justify-between items-start">
             <h3 className="text-lg font-semibold">Edit Bookmark</h3>

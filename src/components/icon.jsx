@@ -21,7 +21,7 @@ export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, i
       className="group relative cursor-pointer flex items-center justify-center bg-gray-800/20 border border-gray-600 rounded-lg opacity-80 hover:opacity-100"
     >
       <button
-        className="absolute text-xs top-1 right-1 p-1 bg-gray-800/50 text-white rounded hidden group-hover:block transition-transform hover:scale-125 z-20"
+        className="absolute text-xs top-1 right-1 p-1 bg-gray-800/50 text-white rounded hidden group-hover:block transition-colors hover:bg-gray-700 z-20"
         onClick={() => toggleDialogDiv(index + 1)}
       >
         ...
