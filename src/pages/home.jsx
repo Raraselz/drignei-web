@@ -57,7 +57,7 @@ function Home() {
 
         {/* Titlu */}
         <div className={`text-white italic font-bold select-none`} style={{
-          fontSize: `${window.innerWidth > 900 ? "3.5rem" : "2.25rem"}`,
+          fontSize: 'clamp(24px, 5vw, 64px)',
         }}>DRIGNEI Web</div>
 
         {/* Search Form */}

@@ -6,8 +6,12 @@ function CosminBounce() {
   const dir = useRef({ x: 1, y: 1 });
 
   const speed = 3;
-  const width = 250;
-  const height = 200;
+  const [width, setWidth] = useState(Math.min(window.innerWidth / 3, window.innerHeight / 3));
+  const [height, setHeight] = useState(width);
+  useEffect(() => {
+    setWidth(Math.min(window.innerWidth / 3, window.innerHeight / 3));
+    setHeight(width);
+  }, [window.innerWidth, window.innerHeight]); 
   const animate = () => {
     setPos(prev => {
       let x = prev.x + dir.current.x * speed;
