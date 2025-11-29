@@ -37,7 +37,7 @@ function Bookmarks({ toggleDialogDiv, dialogDivOpen }) {
     <div style={{
       maxWidth:"80vw",
       
-    }} className="mt-10 mb-10 flex items-center gap-6 overflow-x-auto px-5">
+    }} className="mt-5 mb-10 flex items-center gap-6 overflow-x-auto px-5 py-3 ">
       {bookmarks.map((bookmark, index) => (
         <Icon key={index} index={index} href={bookmark.href} src={bookmark.src} alt={bookmark.alt} toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen} />
       ))}

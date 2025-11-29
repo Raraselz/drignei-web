@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState , useEffect} from 'react'
 import Bookmarks from '../components/bookmarks.jsx'
 
 function Home() {
@@ -45,19 +45,38 @@ function Home() {
     setDarkOverlayOpacity(nextOpen ? 0.5 : 0);
   }
 
+  const getGithubAvatar = async (username) => {
+    const res = await fetch(`https://api.github.com/users/${username}`);
+    if (!res.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await res.json();
+    return data;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     window.open(`https://www.google.com/search?q=${query}`, '_blank');
   } 
 
+  useEffect(() => {
+    getGithubAvatar('raraselz').then(profile => {
+      document.getElementById("author1").src = profile.avatar_url ;
+      document.getElementById("author1_link").href = profile.html_url;
+    });
+    getGithubAvatar('constantyn-silvian').then(profile => {
+      document.getElementById("author2").src = profile.avatar_url ;
+      document.getElementById("author2_link").href = profile.html_url;
+    });
+  }, []);
+
   return (
     <div className="relative w-full bg-transparent">
       <div style={{ height: '93vh' }} className="w-full flex justify-center flex-col flex-nowrap items-center" >
 
         {/* Titlu */}
-        <div className={`text-white italic font-bold select-none`} style={{
-          fontSize: 'clamp(24px, 5vw, 64px)',
+        <div className={`text-white font-bold select-none font-custom`} style={{
+          fontSize: 'clamp(30px, 5vw, 64px)',
         }}>DRIGNEI Web</div>
         {/* Search Form */}
         <form onSubmit={handleSubmit}>
@@ -98,7 +117,24 @@ function Home() {
           </form>
         </div>
       </div>
-
+      <div className='absolute flex flex-row justify-between gap-2 left-0 bottom-0 rounded-tr-md p-2 text-white text-xs select-none font-custom'>
+          <a id="author1_link" target='_black'>
+          <img style={{
+            width:`${Math.max(window.innerWidth * 0.03, 30)}px`,
+            height:`${Math.max(window.innerWidth * 0.03, 30)}px`,
+            borderRadius: '50%',
+            marginRight: '4px'
+          }} className="hover:border-2" id="author1"></img>
+          </a>
+          <a id="author2_link" target='_black'>
+          <img style={{
+            width: `${Math.max(window.innerWidth * 0.03, 20)}px`,
+            height: `${Math.max(window.innerWidth * 0.03, 20)}px`,
+            borderRadius: '50%',
+            marginRight: '4px'
+          }} className="hover:border-2" id="author2"></img>
+          </a>
+      </div>
     </div>
   )
 }

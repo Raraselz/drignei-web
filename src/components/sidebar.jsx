@@ -25,7 +25,7 @@ export default function SideBar() {
     >
       <div className="flex justify-between w-full text-white px-4">
         <Link
-          style={{ fontSize: 'clamp(1px, 2vw, 20px)' }}
+          style={{ fontSize: 'clamp(14px, 2vw, 20px)' }}
           className="font-semibold hover:font-bold"
           to="/drignei-web/"
         >
@@ -33,7 +33,7 @@ export default function SideBar() {
         </Link>
 
         <Link
-          style={{ fontSize: 'clamp(1px, 2vw, 20px)' }}
+          style={{ fontSize: 'clamp(14px, 2vw, 20px)' }}
           className="ml-4 font-semibold hover:font-bold"
           to="/drignei-web/bouncegame"
         >
