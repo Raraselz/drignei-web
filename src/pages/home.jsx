@@ -1,5 +1,6 @@
-import { useState , useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import Bookmarks from '../components/bookmarks.jsx'
+import editButtonImg from '../assets/edit-button.png'
 
 function Home() {
   const [query, setQuery] = useState('');
@@ -57,7 +58,7 @@ function Home() {
   const handleSubmit = (e) => {
     e.preventDefault();
     window.open(`https://www.google.com/search?q=${query}`, '_blank');
-  } 
+  }
 
   // useEffect(() => {
   //   getGithubAvatar('raraselz').then(profile => {
@@ -82,14 +83,14 @@ function Home() {
         <form onSubmit={handleSubmit}>
           <input style={{
             width: "50vw"
-          }}className="mt-10 focus:border-0 outline-none p-3 rounded-lg bg-gray-800 text-white border-0" type="text" placeholder="Google Search" value={query} onChange={(e) => setQuery(e.target.value)} />
+          }} className="mt-10 focus:border-0 outline-none p-3 rounded-lg bg-gray-800 text-white border-0" type="text" placeholder="Google Search" value={query} onChange={(e) => setQuery(e.target.value)} />
           <button style={{
 
           }} className="ml-2 p-3 rounded-lg bg-gray-600 text-white font-semibold hover:bg-gray-900 transition" type="submit">Search</button>
         </form>
 
         {/* Bookmarks */}
-        <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen}  />
+        <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen} />
       </div>
 
       <div // dark overlay
@@ -117,24 +118,41 @@ function Home() {
           </form>
         </div>
       </div>
+      {/* Edit Button */}
+      
+      <button style={{
+        maxwidth: `${Math.max(window.innerWidth * 0.09, 30)}px`,
+        height: `${Math.max(window.innerWidth * 0.04, 30)}px`,
+      }} className='group absolute flex-row justify-between gap-2 bottom-0 right-0 m-2 bg-transparent rounded-md flex items-center  p-1'>
+        <div style={{
+          fontSize: `clamp(14px, 2vw, 20px)`,
+        }}className='bg-trasparent z-0 font-semibold text-white origin-right translate-x-5 scale-0 group-hover:translate-x-0 group-hover:scale-100 transition-all duration-300'>Customise</div>
+        <img style={{
+          width: `${Math.max(window.innerWidth * 0.03, 30)}px`,
+          height: `${Math.max(window.innerWidth * 0.03, 30)}px`,
+        }} src={editButtonImg} className='z-5 group-hover:scale-110 transition-all'></img>
+      </button>
+
+      {/* Credentials */}
       <div className='absolute flex flex-row justify-between gap-2 left-0 bottom-0 rounded-tr-md p-2 text-white text-xs select-none font-custom'>
-          <a id="author1_link" href='https://github.com/raraselz' target='_black'>
+        <a id="author1_link" href='https://github.com/raraselz' target='_black'>
           <img src="https://avatars.githubusercontent.com/u/204874877?v=4" style={{
-            width:`${Math.max(window.innerWidth * 0.03, 30)}px`,
-            height:`${Math.max(window.innerWidth * 0.03, 30)}px`,
+            width: `${Math.max(window.innerWidth * 0.03, 30)}px`,
+            height: `${Math.max(window.innerWidth * 0.03, 30)}px`,
             borderRadius: '50%',
             marginRight: '4px'
           }} className="hover:border-2" id="author1"></img>
-          </a>
-          <a id="author2_link" href="https://github.com/constantyn-silvian" target='_black'>
+        </a>
+        <a id="author2_link" href="https://github.com/constantyn-silvian" target='_black'>
           <img src="https://avatars.githubusercontent.com/u/205173445?v=4" style={{
             width: `${Math.max(window.innerWidth * 0.03, 30)}px`,
             height: `${Math.max(window.innerWidth * 0.03, 30)}px`,
             borderRadius: '50%',
             marginRight: '4px'
           }} className="hover:border-2" id="author2"></img>
-          </a>
+        </a>
       </div>
+
     </div>
   )
 }
