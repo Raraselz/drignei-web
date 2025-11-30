@@ -72,7 +72,7 @@ function CosminBounce() {
           borderRadius: "8px",
           zIndex: 1
         }}
-        className="rounded-md transition-all duration-75"
+        className="rounded-md"
       />
       {/* Cosmin Settings */}
       <div style={{

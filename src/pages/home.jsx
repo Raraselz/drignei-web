@@ -122,7 +122,7 @@ function Home() {
           />
           <button
             type="submit"
-            className="ml-2 px-3 py-3 rounded-lg hover:scale-110 text-white cursor-pointer transition inline-flex items-center justify-center"
+            className="ml-2 px-3 py-3 rounded-lg bg-gray-600 hover:bg-gray-500 text-white cursor-pointer transition inline-flex items-center justify-center"
           >
             <Search />
           </button>
@@ -173,9 +173,9 @@ function Home() {
       </button>
 
       {/*Side Appearance Customization Dialog - TO BE IMPLEMENTED */}
-      <div style={{ right: currentCustomizationPanelPosition, top: "7vh", transition: 'right 0.3s ease-in-out' }} className='select-none fixed w-70 z-40 h-screen bg-gray-900 border-l border-gray-700 shadow-lg'>
+      <div style={{ right: currentCustomizationPanelPosition, top: "7vh", height:"93vh", transition: 'right 0.3s ease-in-out' }} className='select-none fixed w-70 z-40 bg-gray-900 border-l border-gray-700 shadow-lg'>
         <div className='p-4 flex flex-row justify-between items-center'>
-          <h2 className='text-cyan-200/80 font-semibold text-lg font-sans'>Customization</h2> <X className="text-white cursor-pointer hover:opacity-90 hover:shadow-white" onClick={toggleCustomizationPanel} /> 
+          <h2 className='text-white font-semibold text-lg font-sans'>Customization</h2> <X className="text-white cursor-pointer hover:opacity-90 hover:shadow-white" onClick={toggleCustomizationPanel} /> 
         </div>
         <div className="px-4">
           <div className="grid grid-cols-1 gap-4">
