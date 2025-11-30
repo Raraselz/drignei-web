@@ -2,5 +2,15 @@
 @import "tailwindcss";
 
 @theme base {
---font-custom: 'Science Gothic', sans-serif;
+    --font-custom: 'Science Gothic', sans-serif;
 }
+
+:root {
+	--font-custom: 'Science Gothic', sans-serif;
+	--color-1: #dc2626; /* default red */
+	--color-2: #000000; /* default black */
+	--color-3: #000000; /* default black */
+    --degrees: "160deg"; /* default degrees */
+}
+
+/* You can reference these variables using var(--color-1), etc. */

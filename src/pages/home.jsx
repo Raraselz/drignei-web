@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Bookmarks from '../components/bookmarks.jsx'
 import editButtonImg from '../assets/edit-button.png'
+import { X, Search } from 'lucide-react'
 
 function Home() {
   const [query, setQuery] = useState('');
@@ -8,6 +9,12 @@ function Home() {
   const [dialogDivOpen, setDialogDivOpen] = useState(false);
   const [currentBookmarkIndex, setCurrentBookmarkIndex] = useState(0);
   const [currentBookmarkIndexURL, setCurrentBookmarkIndexURL] = useState("");
+  const [color1, setColor1] = useState(() => localStorage.getItem('color1') || '#dc2626');
+  const [color2, setColor2] = useState(() => localStorage.getItem('color2') || '#000000');
+  const [color3, setColor3] = useState(() => localStorage.getItem('color3') || '#000000');
+  const [degrees, setDegrees] = useState(() => Number(localStorage.getItem('degrees')) || 160);
+  const [currentCustomizationPanelOpen, setCurrentCustomizationPanelOpen] = useState(false);
+  const [currentCustomizationPanelPosition, setCurrentCustomizationPanelPosition] = useState('-280px');
 
   const getURLfavicon = (url) => {
     try {
@@ -55,10 +62,42 @@ function Home() {
   //   return data;
   // }
 
+  const toggleCustomizationPanel = () => {
+    if (!currentCustomizationPanelOpen) {
+      setCurrentCustomizationPanelPosition('0px');
+      setCurrentCustomizationPanelOpen(true);
+    }
+    else {
+      setCurrentCustomizationPanelPosition('-280px');
+      setCurrentCustomizationPanelOpen(false);
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     window.open(`https://www.google.com/search?q=${query}`, '_blank');
   }
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--color-1', color1);
+    localStorage.setItem('color1', color1);
+  }, [color1]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--color-2', color2);
+    localStorage.setItem('color2', color2);
+  }, [color2]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--color-3', color3);
+    localStorage.setItem('color3', color3);
+  }, [color3]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--degrees', `${degrees}deg`);
+    console.log(Number(degrees))
+    localStorage.setItem('degrees', Number(degrees));
+  }, [degrees]);
 
   // useEffect(() => {
   //   getGithubAvatar('raraselz').then(profile => {
@@ -80,13 +119,21 @@ function Home() {
           fontSize: 'clamp(30px, 5vw, 64px)',
         }}>DRIGNEI Web</div>
         {/* Search Form */}
-        <form onSubmit={handleSubmit}>
-          <input style={{
-            width: "50vw"
-          }} className="mt-10 focus:border-0 outline-none p-3 rounded-lg bg-gray-800 text-white border-0" type="text" placeholder="Google Search" value={query} onChange={(e) => setQuery(e.target.value)} />
-          <button style={{
-
-          }} className="ml-2 p-3 rounded-lg bg-gray-600 text-white font-semibold hover:bg-gray-900 transition" type="submit">Search</button>
+        <form onSubmit={handleSubmit} className="flex items-center mt-10">
+          <input
+            style={{ width: '50vw' }}
+            className="focus:border-0 outline-none p-3 rounded-lg bg-gray-800 text-white border-0"
+            type="text"
+            placeholder="Google Search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="ml-2 px-3 py-3 rounded-lg bg-gray-600 text-white hover:bg-gray-900 transition inline-flex items-center justify-center"
+          >
+            <Search />
+          </button>
         </form>
 
         {/* Bookmarks */}
@@ -123,15 +170,53 @@ function Home() {
       <button style={{
         maxwidth: `${Math.max(window.innerWidth * 0.09, 30)}px`,
         height: `${Math.max(window.innerWidth * 0.04, 30)}px`,
-      }} className='group absolute flex-row justify-between gap-2 bottom-0 right-0 m-2 bg-transparent rounded-md flex items-center  p-1'>
+      }} className='group absolute flex-row justify-between gap-2 bottom-0 right-0 m-2 bg-transparent rounded-md flex items-center p-1'>
         <div style={{
           fontSize: `clamp(14px, 2vw, 20px)`,
         }}className='bg-trasparent z-0 font-semibold text-white origin-right translate-x-5 scale-0 group-hover:translate-x-0 group-hover:scale-100 transition-all duration-300'>Customise</div>
         <img style={{
           width: `${Math.max(window.innerWidth * 0.03, 30)}px`,
           height: `${Math.max(window.innerWidth * 0.03, 30)}px`,
-        }} src={editButtonImg} className='z-5 group-hover:scale-110 transition-all'></img>
+        }} src={editButtonImg} onClick={toggleCustomizationPanel} className='z-5 group-hover:scale-110 transition-all'></img>
       </button>
+
+      {/*Side Appearance Customization Dialog - TO BE IMPLEMENTED */}
+      <div style={{ right: currentCustomizationPanelPosition, top: "7vh", transition: 'right 0.3s ease-in-out' }} className='fixed w-70 z-40 h-screen bg-gray-900 border-l border-gray-700 shadow-lg'>
+        <div className='p-4 flex flex-row justify-between items-center'>
+          <h2 className='text-white text-lg font-semibold'>Customization</h2> <X onClick={toggleCustomizationPanel} className='text-white' /> 
+        </div>
+        <div className="px-4">
+          <div className="grid grid-cols-1 gap-4">
+            <label className="flex items-center justify-between gap-3 bg-gray-800 p-2 rounded">
+              <span className="text-white">Color #1</span>
+              <input type="color" className="w-12 h-8 rounded" value={color1} onChange={(e) => setColor1(e.target.value)} />
+            </label>
+
+            <label className="flex items-center justify-between gap-3 bg-gray-800 p-2 rounded">
+              <span className="text-white">Color #2</span>
+              <input type="color" className="w-12 h-8 rounded" value={color2} onChange={(e) => setColor2(e.target.value)} />
+            </label>
+            <label className="flex items-center justify-between gap-3 bg-gray-800 p-2 rounded">
+              <span className="text-white">Color #3</span>
+              <input type="color" className="w-12 h-8 rounded" value={color3} onChange={(e) => setColor3(e.target.value)} />
+            </label>
+            <div className="flex flex-col bg-gray-800 p-2 rounded">
+              <label className="flex items-center justify-between mb-2">
+                <span className="text-white">Gradient Angle</span>
+                <span className="text-white">{degrees}°</span>
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="360"
+                value={degrees}
+                onChange={(e) => setDegrees(Number(e.target.value))}
+                className="w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Credentials */}
       <div className='absolute flex flex-row justify-between gap-2 left-0 bottom-0 rounded-tr-md p-2 text-white text-xs select-none font-custom'>
