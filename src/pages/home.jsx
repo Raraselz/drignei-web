@@ -75,7 +75,10 @@ function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    window.open(`https://www.google.com/search?q=${query}`, '_blank');
+    if(query.trim())
+    {
+      window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+    }
   }
 
   useEffect(() => {
@@ -99,17 +102,6 @@ function Home() {
     localStorage.setItem('degrees', Number(degrees));
   }, [degrees]);
 
-  // useEffect(() => {
-  //   getGithubAvatar('raraselz').then(profile => {
-  //     document.getElementById("author1").src = profile.avatar_url ;
-  //     document.getElementById("author1_link").href = profile.html_url;
-  //   });
-  //   getGithubAvatar('constantyn-silvian').then(profile => {
-  //     document.getElementById("author2").src = profile.avatar_url ;
-  //     document.getElementById("author2_link").href = profile.html_url;
-  //   });
-  // }, []);
-
   return (
     <div className="relative w-full bg-transparent">
       <div style={{ height: '93vh' }} className="w-full flex justify-center flex-col flex-nowrap items-center" >
@@ -122,7 +114,7 @@ function Home() {
         <form onSubmit={handleSubmit} className="flex items-center mt-10">
           <input
             style={{ width: '50vw' }}
-            className="focus:border-0 outline-none p-3 rounded-lg bg-gray-800 text-white border-0"
+            className="focus:border-0 focus:bg-gray-700 transition-all outline-none p-3 rounded-lg bg-gray-800 text-white border-0"
             type="text"
             placeholder="Google Search"
             value={query}
@@ -130,7 +122,7 @@ function Home() {
           />
           <button
             type="submit"
-            className="ml-2 px-3 py-3 rounded-lg bg-gray-600 text-white hover:bg-gray-900 transition inline-flex items-center justify-center"
+            className="ml-2 px-3 py-3 rounded-lg hover:scale-110 text-white cursor-pointer transition inline-flex items-center justify-center"
           >
             <Search />
           </button>
@@ -170,7 +162,7 @@ function Home() {
       <button style={{
         maxwidth: `${Math.max(window.innerWidth * 0.09, 30)}px`,
         height: `${Math.max(window.innerWidth * 0.04, 30)}px`,
-      }} className='group absolute flex-row justify-between gap-2 bottom-0 right-0 m-2 bg-transparent rounded-md flex items-center p-1'>
+      }} className='group absolute cursor-pointer flex-row justify-between gap-2 bottom-0 right-0 m-2 bg-transparent rounded-md flex items-center p-1'>
         <div style={{
           fontSize: `clamp(14px, 2vw, 20px)`,
         }}className='bg-trasparent z-0 font-semibold text-white origin-right translate-x-5 scale-0 group-hover:translate-x-0 group-hover:scale-100 transition-all duration-300'>Customise</div>
@@ -181,24 +173,24 @@ function Home() {
       </button>
 
       {/*Side Appearance Customization Dialog - TO BE IMPLEMENTED */}
-      <div style={{ right: currentCustomizationPanelPosition, top: "7vh", transition: 'right 0.3s ease-in-out' }} className='fixed w-70 z-40 h-screen bg-gray-900 border-l border-gray-700 shadow-lg'>
+      <div style={{ right: currentCustomizationPanelPosition, top: "7vh", transition: 'right 0.3s ease-in-out' }} className='select-none fixed w-70 z-40 h-screen bg-gray-900 border-l border-gray-700 shadow-lg'>
         <div className='p-4 flex flex-row justify-between items-center'>
-          <h2 className='text-white text-lg font-semibold'>Customization</h2> <X onClick={toggleCustomizationPanel} className='text-white' /> 
+          <h2 className='text-cyan-200/80 font-semibold text-lg font-sans'>Customization</h2> <X className="text-white cursor-pointer hover:opacity-90 hover:shadow-white" onClick={toggleCustomizationPanel} /> 
         </div>
         <div className="px-4">
           <div className="grid grid-cols-1 gap-4">
             <label className="flex items-center justify-between gap-3 bg-gray-800 p-2 rounded">
               <span className="text-white">Color #1</span>
-              <input type="color" className="w-12 h-8 rounded" value={color1} onChange={(e) => setColor1(e.target.value)} />
+              <input type="color" className="cursor-pointer  hover:border-2 border-white transition-all w-12 h-8 rounded" value={color1} onChange={(e) => setColor1(e.target.value)} />
             </label>
 
             <label className="flex items-center justify-between gap-3 bg-gray-800 p-2 rounded">
               <span className="text-white">Color #2</span>
-              <input type="color" className="w-12 h-8 rounded" value={color2} onChange={(e) => setColor2(e.target.value)} />
+              <input type="color" className="cursor-pointer hover:border-2 border-white w-12 h-8 rounded" value={color2} onChange={(e) => setColor2(e.target.value)} />
             </label>
             <label className="flex items-center justify-between gap-3 bg-gray-800 p-2 rounded">
               <span className="text-white">Color #3</span>
-              <input type="color" className="w-12 h-8 rounded" value={color3} onChange={(e) => setColor3(e.target.value)} />
+              <input type="color" className="cursor-pointer hover:border-2 border-white transition-all w-12 h-8 rounded" value={color3} onChange={(e) => setColor3(e.target.value)} />
             </label>
             <div className="flex flex-col bg-gray-800 p-2 rounded">
               <label className="flex items-center justify-between mb-2">

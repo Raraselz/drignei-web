@@ -15,12 +15,6 @@ function CosminBounce() {
   const sizeH = useRef(height);
   
   useEffect(() => {
-    setWidth(Math.min(window.innerWidth / 3, window.innerHeight / 3));
-    setHeight(Math.min(window.innerWidth / 3, window.innerHeight / 3));
-    setBarOffset(window.innerHeight * 0.07);
-  }, [window.innerWidth, window.innerHeight]);
-
-  useEffect(() => {
     speedRef.current = speed;
     sizeH.current = height;
     sizeW.current = width;
@@ -78,7 +72,7 @@ function CosminBounce() {
           borderRadius: "8px",
           zIndex: 1
         }}
-        className="rounded-md"
+        className="rounded-md transition-all duration-75"
       />
       {/* Cosmin Settings */}
       <div style={{
@@ -90,11 +84,11 @@ function CosminBounce() {
         </div>
         <div>
           <div className="text-red-500 font-semibold text-right" >Width: {Math.floor(width)}</div>
-          <input className="opacity-70 outline-0 hover:opacity-100" type="range" value={Math.floor(width)} onChange={(e) => { setWidth(Number(e.target.value)) }} min='1' max='1000'></input>
+          <input className="opacity-70 outline-0 hover:opacity-100" type="range" value={Math.floor(width)} onChange={(e) => { setWidth(Number(e.target.value)) }} min='50' max='500'></input>
         </div>
         <div>
           <div className="text-red-500 font-semibold text-right" >Height: {Math.floor(height)}</div>
-          <input className="opacity-70 outline-0 hover:opacity-100" type="range" value={Math.floor(height)} onChange={(e) => { setHeight(Number(e.target.value)) }} min='1' max='1000'></input>
+          <input className="opacity-70 outline-0 hover:opacity-100" type="range" value={Math.floor(height)} onChange={(e) => { setHeight(Number(e.target.value)) }} min='50' max='500'></input>
         </div>
       </div>
     </div>

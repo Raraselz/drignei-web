@@ -1,5 +1,5 @@
 export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, index }) {
-  const defaultSize = window.innerHeight / 8; // pixels
+  const defaultSize = Math.min(window.innerWidth / 5, window.innerHeight / 7); // pixels
   const openBookmark = (url) => {
     try {
       const parsed = new URL(url);
@@ -31,7 +31,7 @@ export default function Icon({ href, src, alt, toggleDialogDiv, dialogDivOpen, i
         style={{ width: imageSize, height: imageSize }}
         onClick={() => openBookmark(href)}
       >
-        <img src={src} alt={alt} className="w-full h-full object-contain" />
+        <img src={src} className="w-full h-full object-contain" />
       </div>
     </div>
   );

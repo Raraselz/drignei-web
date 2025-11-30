@@ -25,33 +25,43 @@ export default function SideBar() {
     >
       <div className="flex justify-between w-full text-white px-4">
         <Link
-          style={{ fontSize: 'clamp(14px, 2vw, 20px)' }}
-          className="font-semibold hover:font-bold"
           to="/drignei-web/"
+          className="
+            font-semibold
+            text-[clamp(14px,2vw,20px)]
+            transition-transform
+            hover:scale-105
+          "
         >
           Home
         </Link>
 
+
         <Link
           style={{ fontSize: 'clamp(14px, 2vw, 20px)' }}
-          className="ml-4 font-semibold hover:font-bold"
+          className="
+            font-semibold
+            text-[clamp(14px,2vw,20px)]
+            transition-transform
+            hover:scale-105
+          "
           to="/drignei-web/bouncegame"
         >
-          Cosmin Bounce
+          Bounce
         </Link>
       </div>
 
       <div
         aria-hidden={false}
         className="absolute text-center text-lg left-1/2 transform -translate-x-1/2 text-white font-light "
-        style={{ pointerEvents: 'none',
+        style={{
+          pointerEvents: 'none',
           fontSize: 'clamp(9px, 2vw, 20px)',
           width: '20vw'
-         }}
+        }}
       >
         {currentTimeText}
       </div>
     </nav>
   )
 }
-                  
