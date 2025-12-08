@@ -80,7 +80,7 @@ function CosminBounce() {
       }}className="absolute z-10 right-2 flex flex-col">
         <div>
           <div className="text-red-500 font-semibold text-right" >Speed: {speed}</div>
-          <input className="opacity-70 outline-0 hover:opacity-100" type="range" value={speed} onChange={(e) => { setSpeed(Number(e.target.value)) }} min='1' max='20'></input>
+          <input className="opacity-70 outline-0 hover:opacity-100" type="range" value={speed} onChange={(e) => { setSpeed(Number(e.target.value)) }} min='1' max='1000'></input>
         </div>
         <div>
           <div className="text-red-500 font-semibold text-right" >Width: {Math.floor(width)}</div>
