@@ -3,16 +3,12 @@ import Bookmarks from '../components/bookmarks.jsx'
 import editButtonImg from '../assets/edit-button.png'
 import { X, Search } from 'lucide-react'
 
-function Home() {
+function Home({ color1, setColor1, color2, setColor2, color3, setColor3, degrees, setDegrees }) {
   const [query, setQuery] = useState('');
   const [darkOverlayOpacity, setDarkOverlayOpacity] = useState(0);
   const [dialogDivOpen, setDialogDivOpen] = useState(false);
   const [currentBookmarkIndex, setCurrentBookmarkIndex] = useState(0);
   const [currentBookmarkIndexURL, setCurrentBookmarkIndexURL] = useState("");
-  const [color1, setColor1] = useState(() => localStorage.getItem('color1') || '#dc2626');
-  const [color2, setColor2] = useState(() => localStorage.getItem('color2') || '#000000');
-  const [color3, setColor3] = useState(() => localStorage.getItem('color3') || '#000000');
-  const [degrees, setDegrees] = useState(() => Number(localStorage.getItem('degrees')) || 160);
   const [currentCustomizationPanelOpen, setCurrentCustomizationPanelOpen] = useState(false);
   const [currentCustomizationPanelPosition, setCurrentCustomizationPanelPosition] = useState('-280px');
 
@@ -29,12 +25,10 @@ function Home() {
     try {
       const urlObj = new URL(pageUrl);
       const domain = urlObj.hostname;
-      // FaviconKit (preferred)
       //return `https://api.faviconkit.com/${domain}/${size}`;
-      // Or, if you prefer Google:
       return `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}`;
     } catch (e) {
-      return ""; // invalid URL
+      return "";
     }
   }
 
@@ -52,15 +46,6 @@ function Home() {
     setDialogDivOpen(nextOpen);
     setDarkOverlayOpacity(nextOpen ? 0.5 : 0);
   }
-
-  // const getGithubAvatar = async (username) => {
-  //   const res = await fetch(`https://api.github.com/users/${username}`);
-  //   if (!res.ok) {
-  //     throw new Error('Network response was not ok');
-  //   }
-  //   const data = await res.json();
-  //   return data;
-  // }
 
   const toggleCustomizationPanel = () => {
     if (!currentCustomizationPanelOpen) {
@@ -81,36 +66,18 @@ function Home() {
     }
   }
 
-  useEffect(() => {
-    document.documentElement.style.setProperty('--color-1', color1);
-    localStorage.setItem('color1', color1);
-  }, [color1]);
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--color-2', color2);
-    localStorage.setItem('color2', color2);
-  }, [color2]);
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--color-3', color3);
-    localStorage.setItem('color3', color3);
-  }, [color3]);
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--degrees', `${degrees}deg`);
-    console.log(Number(degrees))
-    localStorage.setItem('degrees', Number(degrees));
-  }, [degrees]);
+  useEffect(() => { localStorage.setItem('color1', color1); }, [color1]);
+  useEffect(() => { localStorage.setItem('color2', color2); }, [color2]);
+  useEffect(() => { localStorage.setItem('color3', color3); }, [color3]);
+  useEffect(() => { localStorage.setItem('degrees', degrees); }, [degrees]);
 
   return (
     <div className="relative w-full bg-transparent">
       <div style={{ height: '93vh' }} className="w-full flex justify-center flex-col flex-nowrap items-center" >
 
-        {/* Titlu */}
         <div className={`text-white font-bold select-none font-custom`} style={{
           fontSize: 'clamp(30px, 5vw, 64px)',
         }}>DRIGNEI Web</div>
-        {/* Search Form */}
         <form onSubmit={handleSubmit} className="flex items-center mt-10">
           <input
             style={{ width: '50vw' }}
@@ -128,11 +95,10 @@ function Home() {
           </button>
         </form>
 
-        {/* Bookmarks */}
         <Bookmarks toggleDialogDiv={toggleDialogDiv} dialogDivOpen={dialogDivOpen} />
       </div>
 
-      <div // dark overlay
+      <div
         className="fixed inset-0 bg-black pointer-events-none"
         style={{ opacity: darkOverlayOpacity }}
       ></div>
@@ -157,7 +123,6 @@ function Home() {
           </form>
         </div>
       </div>
-      {/* Edit Button */}
       
       <button style={{
         maxwidth: `${Math.max(window.innerWidth * 0.09, 30)}px`,
@@ -172,7 +137,6 @@ function Home() {
         }} src={editButtonImg} onClick={toggleCustomizationPanel} className='z-5 group-hover:scale-110 transition-all'></img>
       </button>
 
-      {/*Side Appearance Customization Dialog - TO BE IMPLEMENTED */}
       <div style={{ right: currentCustomizationPanelPosition, top: "7vh", height:"93vh", transition: 'right 0.3s ease-in-out' }} className='select-none fixed w-70 z-40 bg-gray-900 border-l border-gray-700 shadow-lg'>
         <div className='p-4 flex flex-row justify-between items-center'>
           <h2 className='text-white font-semibold text-lg font-sans'>Customization</h2> <X className="text-white cursor-pointer hover:opacity-90 hover:shadow-white" onClick={toggleCustomizationPanel} /> 
@@ -210,7 +174,6 @@ function Home() {
         </div>
       </div>
 
-      {/* Credentials */}
       <div className='absolute flex flex-row justify-between gap-2 left-0 bottom-0 rounded-tr-md p-2 text-white text-xs select-none font-custom'>
         <a id="author1_link" href='https://github.com/raraselz' target='_black'>
           <img src="https://avatars.githubusercontent.com/u/204874877?v=4" style={{

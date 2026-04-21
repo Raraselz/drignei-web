@@ -25,7 +25,7 @@ export default function SideBar() {
     >
       <div className="flex justify-between w-full text-white px-4">
         <Link
-          to="/drignei-web/"
+          to="/"
           className="
             font-semibold
             text-[clamp(14px,2vw,20px)]
@@ -45,7 +45,7 @@ export default function SideBar() {
             transition-transform
             hover:scale-105
           "
-          to="/drignei-web/bouncegame"
+          to="/bouncegame"
         >
           Bounce
         </Link>

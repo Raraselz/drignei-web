@@ -10,7 +10,7 @@
 	--color-1: #dc2626; /* default red */
 	--color-2: #000000; /* default black */
 	--color-3: #000000; /* default black */
-    --degrees: "160deg"; /* default degrees */
+    --degrees: 160deg; /* default degrees */
 }
 
 /* You can reference these variables using var(--color-1), etc. */
