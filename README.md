@@ -1,9 +1,3 @@
-This is a great start for **DRIGNEI Web**\! The screenshots show a very clean, dark-themed UI with a nice gradient and functional customization features (like the color picker and the "Bounce" mode with the image sliders).
-
-Since you are likely hosting this via the `docs` folder using `npx serve`, here is a professional, well-structured `README.md` that fits the "renowned Cosmin Drignei" theme.
-
------
-
 # 🌐 DRIGNEI Web
 
 > *A high-performance, custom-themed search gateway inspired by the renowned Cosmin Drignei.*
