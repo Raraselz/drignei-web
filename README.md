@@ -79,9 +79,4 @@ This search engine is custom-themed to reflect the professional and multifaceted
 
 Copyright © 2026. All rights reserved.
 
------
 
-### 💡 Tips for your README:
-
-  * **The GIF factor:** Since you have a "Bounce" mode, I highly recommend recording a 5-second GIF of the image moving and putting it in the README. It looks much more impressive than a static screenshot\!
-  * **Regionalism:** Since you used "scrisai" earlier, you could add a small easter egg in the footer of the README like: *"Proiect lucrat cu drag, de acilea din Oltenia."*
