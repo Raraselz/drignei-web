@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 
+drignei/*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
